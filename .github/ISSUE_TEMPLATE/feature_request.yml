@@ -1,0 +1,47 @@
+name: Product idea or feature request
+description: Suggest a business problem or control workflow for a CorePilot Labs Odoo product.
+title: "[Idea] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the feedback. Please describe the business problem before proposing the feature. Do not include confidential company or customer data.
+  - type: dropdown
+    id: product
+    attributes:
+      label: Product
+      options:
+        - ERP Control Suite
+        - Purchase Price Control
+        - Smart Transaction Capture
+        - Inventory Close Control
+        - Not sure / cross-product
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Business problem
+      description: What repeatedly goes wrong, takes too long, or lacks control today?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: What should a successful solution help the user decide or do?
+    validations:
+      required: true
+  - type: input
+    id: odoo
+    attributes:
+      label: Odoo version
+      placeholder: "19.0"
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Public-data check
+      options:
+        - label: I confirm this issue contains no credentials, customer data, private invoices, database dumps, or other confidential information.
+          required: true
