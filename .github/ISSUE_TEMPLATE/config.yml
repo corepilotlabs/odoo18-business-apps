@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Commercial support and private incidents
+    url: https://github.com/corepilotlabs/odoo18-business-apps/blob/main/SUPPORT.md
+    about: Use the private support route for customer-specific, licensing, production, or sensitive matters.
+  - name: Security reporting
+    url: https://github.com/corepilotlabs/odoo18-business-apps/blob/main/SECURITY.md
+    about: Report security issues privately; do not publish exploit or customer data.
