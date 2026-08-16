@@ -1,0 +1,62 @@
+name: Public Showcase Quality
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate required public files
+        run: |
+          set -euo pipefail
+          test -f README.md
+          test -f index.html
+          test -f styles.css
+          test -f SUPPORT.md
+          test -f SECURITY.md
+          test -f products/erp-control-suite.md
+          test -f products/purchase-price-control.md
+          test -f products/smart-transaction-capture.md
+          test -f products/inventory-close-control.md
+
+      - name: Validate public-safe content
+        run: |
+          set -euo pipefail
+          grep -q "corepilotlabssupport@gmail.com" README.md
+          grep -q "Odoo 19" index.html
+          ! grep -R "corepilotlabs/corepilot-odoo-apps" --exclude='showcase-quality.yml' .
+          ! grep -R -E "sk-[A-Za-z0-9_-]{16,}|password[[:space:]]*[:=]" --exclude='showcase-quality.yml' .
+
+      - name: Validate HTML structure
+        run: |
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+
+          class Parser(HTMLParser):
+              pass
+
+          html = Path('index.html').read_text(encoding='utf-8')
+          Parser().feed(html)
+          assert '<title>' in html
+          assert 'meta name="description"' in html
+          assert 'mailto:corepilotlabssupport@gmail.com' in html
+          print('PUBLIC_SHOWCASE_HTML_OK')
+          PY
+
+      - name: Summary
+        run: |
+          echo "### CorePilot Labs public showcase" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Required files: PASS" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Public-safety checks: PASS" >> "$GITHUB_STEP_SUMMARY"
+          echo "- HTML parse/smoke check: PASS" >> "$GITHUB_STEP_SUMMARY"
