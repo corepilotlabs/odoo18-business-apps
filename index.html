@@ -3,102 +3,169 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CorePilot Labs — Odoo Business Control Tools</title>
-  <meta name="description" content="CorePilot Labs builds evidence-driven Odoo 19 control apps for ERP diagnostics, purchase price control, transaction capture and inventory close verification.">
-  <meta property="og:title" content="CorePilot Labs — Odoo Business Control Tools">
-  <meta property="og:description" content="Detect problems earlier. Understand the evidence. Approve safely. Verify the result.">
+  <title>CorePilot Labs — Controlled Odoo 19 Business Operations</title>
+  <meta name="description" content="CorePilot Labs builds Odoo 19 business-control apps for ERP diagnostics, purchase-price intelligence, verified transaction capture and inventory close control.">
+  <meta name="theme-color" content="#07111f">
+  <meta property="og:title" content="CorePilot Labs — Odoo 19 Business Control Tools">
+  <meta property="og:description" content="Detect problems earlier. Build evidence. Approve safely. Verify the result.">
+  <meta property="og:type" content="website">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <span class="eyebrow">COREPILOT LABS · ODOO 19</span>
-      <h1>Business controls that help Odoo teams detect problems before they become expensive.</h1>
-      <p class="lead">Inspect the evidence. Understand the risk. Approve safely. Verify the result.</p>
-      <div class="actions">
-        <a class="button primary" href="mailto:corepilotlabssupport@gmail.com">Contact support</a>
-        <a class="button" href="#products">Explore products</a>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="CorePilot Labs home">
+        <span class="brand-mark">CP</span><span>CorePilot Labs</span>
+      </a>
+      <div class="nav-links">
+        <a href="#products">Products</a>
+        <a href="#proof">Evidence</a>
+        <a href="#problems">Problems</a>
+        <a href="FAQ.md">FAQ</a>
+        <a href="ar.html">العربية</a>
       </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">COREPILOT LABS · ODOO 19</span>
+        <h1>Control the moments where ERP mistakes become expensive.</h1>
+        <p class="lead">CorePilot builds focused Odoo tools for diagnosis, procurement control, transaction capture and inventory close — with evidence, approval gates and verification where the workflow demands it.</p>
+        <div class="actions">
+          <a class="button primary" href="#products">Explore the product line</a>
+          <a class="button" href="mailto:corepilotlabssupport@gmail.com?subject=CorePilot%20Labs%20product%20inquiry">Talk to CorePilot</a>
+        </div>
+        <div class="trust-row">
+          <span>Odoo 19</span><span>OPL-1 commercial apps</span><span>Private source</span><span>Automated release gates</span>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="CorePilot control lifecycle">
+        <div class="panel-kicker">THE CONTROL LIFECYCLE</div>
+        <ol class="lifecycle">
+          <li><b>01</b><span><strong>Detect</strong><small>Find the exception before it spreads.</small></span></li>
+          <li><b>02</b><span><strong>Explain</strong><small>Show why it matters and what evidence supports it.</small></span></li>
+          <li><b>03</b><span><strong>Control</strong><small>Review, dry-run or approve before sensitive execution.</small></span></li>
+          <li><b>04</b><span><strong>Verify</strong><small>Compare the actual result with the expected result.</small></span></li>
+        </ol>
+      </aside>
     </div>
   </header>
 
   <main>
     <section class="section" id="products">
       <div class="wrap">
-        <h2>Odoo 19 product line</h2>
-        <p class="intro">Focused commercial tools built around real control points in accounting, purchasing, transaction capture and inventory close.</p>
-        <div class="grid">
-          <article class="card">
-            <span class="tag">Accounting · ERP Control</span>
+        <div class="section-head">
+          <div><span class="eyebrow blue">PRODUCT LINE</span><h2>Four controls. Four costly failure points.</h2></div>
+          <p>Each product has a narrow business job. The goal is not more screens. The goal is a clearer route from exception to evidence-backed action.</p>
+        </div>
+        <div class="product-grid">
+          <article class="product-card featured">
+            <div class="status live">Published</div>
+            <span class="tag">ERP · Accounting Control</span>
             <h3>ERP Control Suite</h3>
-            <p>Diagnose ERP and accounting problems, inspect evidence, plan controlled fixes and verify outcomes.</p>
-            <div class="price">$199</div>
-            <a href="https://github.com/corepilotlabs/odoo18-business-apps/blob/main/products/erp-control-suite.md">Product brief →</a>
+            <p>Structured diagnosis and control for ERP/accounting issues, reporting, reconciliation, inventory valuation and cutover evidence.</p>
+            <ul><li>Inspect and diagnose</li><li>Build evidence before fixes</li><li>Verify outcomes after action</li></ul>
+            <div class="card-foot"><div><small>Commercial price</small><strong>$199</strong></div><a href="products/erp-control-suite.md">Product brief →</a></div>
           </article>
-          <article class="card">
+
+          <article class="product-card">
+            <div class="status validated">Validated candidate</div>
             <span class="tag">Purchases · Price Intelligence</span>
             <h3>Purchase Price Control</h3>
-            <p>Compare current prices with vendor history, averages, best historical prices and alternative suppliers before approval.</p>
-            <div class="price">$99</div>
-            <a href="https://github.com/corepilotlabs/odoo18-business-apps/blob/main/products/purchase-price-control.md">Product brief →</a>
+            <p>Expose price increases before approval by comparing current purchase prices with vendor history and alternatives.</p>
+            <ul><li>Historical price comparison</li><li>Vendor intelligence</li><li>Controlled high-price approval</li></ul>
+            <div class="card-foot"><div><small>Planned commercial price</small><strong>$99</strong></div><a href="products/purchase-price-control.md">Product brief →</a></div>
           </article>
-          <article class="card">
-            <span class="tag">Accounting · Capture</span>
+
+          <article class="product-card">
+            <div class="status validated">Validated candidate</div>
+            <span class="tag">Accounting · Capture Control</span>
             <h3>Smart Transaction Capture</h3>
-            <p>Capture document evidence, validate totals and duplicates, review low-confidence data and create verified drafts.</p>
-            <div class="price">$149</div>
-            <a href="https://github.com/corepilotlabs/odoo18-business-apps/blob/main/products/smart-transaction-capture.md">Product brief →</a>
+            <p>Turn PDF/image evidence into controlled accounting drafts, with confidence checks, duplicate detection and fail-closed review.</p>
+            <ul><li>OCR-assisted capture</li><li>Total/tax validation</li><li>Verified draft creation</li></ul>
+            <div class="card-foot"><div><small>Planned commercial price</small><strong>$149</strong></div><a href="products/smart-transaction-capture.md">Product brief →</a></div>
           </article>
-          <article class="card">
+
+          <article class="product-card">
+            <div class="status validated">Validated candidate</div>
             <span class="tag">Inventory · Close Control</span>
             <h3>Inventory Close Control</h3>
-            <p>Detect timing gaps and valuation risks, lock dry-run evidence, approve the close and verify Odoo's native close result.</p>
-            <div class="price">$129</div>
-            <a href="https://github.com/corepilotlabs/odoo18-business-apps/blob/main/products/inventory-close-control.md">Product brief →</a>
+            <p>Detect timing and valuation risks before close, lock dry-run evidence, require approval and verify the native Odoo close result.</p>
+            <ul><li>Timing-gap detection</li><li>Evidence signature + approval</li><li>Post-close verification</li></ul>
+            <div class="card-foot"><div><small>Planned commercial price</small><strong>$129</strong></div><a href="products/inventory-close-control.md">Product brief →</a></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section dark">
+    <section class="section proof-section" id="proof">
       <div class="wrap">
-        <h2>Control flow, not blind automation</h2>
-        <div class="flow">
-          <span>Detect</span><b>→</b><span>Explain</span><b>→</b><span>Evidence</span><b>→</b><span>Review</span><b>→</b><span>Approve</span><b>→</b><span>Execute</span><b>→</b><span>Verify</span>
+        <div class="section-head inverse">
+          <div><span class="eyebrow">RELEASE EVIDENCE</span><h2>Claims should have a trail.</h2></div>
+          <p>The public showcase records the release gates completed in the private development repository without exposing commercial source code or customer data.</p>
         </div>
-        <p>High-impact actions should not depend on a single click or an unverified assumption. CorePilot products use evidence checks, approval gates and post-action validation where the workflow requires them.</p>
+        <div class="proof-grid">
+          <div class="proof-card"><strong>4</strong><span>Odoo 19 products documented</span></div>
+          <div class="proof-card"><strong>PASS</strong><span>Automated runtime gates for current candidates</span></div>
+          <div class="proof-card"><strong>19.0</strong><span>Current active product line</span></div>
+          <div class="proof-card"><strong>PRIVATE</strong><span>Commercial source and customer data</span></div>
+        </div>
+        <div class="evidence-table" role="table" aria-label="Release validation identifiers">
+          <div class="evidence-row header"><span>Product</span><span>Gate</span><span>Traceability</span></div>
+          <div class="evidence-row"><span>ERP Control Suite</span><span>Store single-root + install verification</span><code>31837957817</code></div>
+          <div class="evidence-row"><span>Purchase Price Control</span><span>Install · tests · upgrade · reinstall</span><code>31897483965</code></div>
+          <div class="evidence-row"><span>Smart Transaction Capture</span><span>Install · tests · upgrade · reinstall</span><code>31897495844</code></div>
+          <div class="evidence-row"><span>Inventory Close Control</span><span>Install · TransactionCase · upgrade · reinstall</span><code>31938504038</code></div>
+        </div>
+        <a class="text-link light" href="RELEASE_VALIDATION.md">Read the release validation summary →</a>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="problems">
       <div class="wrap">
-        <h2>Built with release evidence</h2>
-        <div class="proof">
-          <div><strong>Fresh install</strong><span>Automated runtime validation</span></div>
-          <div><strong>Upgrade</strong><span>Upgrade and retest gates</span></div>
-          <div><strong>Reinstall</strong><span>Uninstall / reinstall smoke checks</span></div>
-          <div><strong>Fail closed</strong><span>Stop on inconsistent evidence</span></div>
+        <div class="section-head">
+          <div><span class="eyebrow blue">PROBLEM LIBRARY</span><h2>Search for the problem, not the product name.</h2></div>
+          <p>CorePilot's public material starts from real operating questions. That makes the documentation useful before a buyer has decided which tool they need.</p>
+        </div>
+        <div class="problem-grid">
+          <a class="problem-card" href="use-cases/odoo-purchase-price-increase-control.md"><span>Purchasing</span><strong>How do you catch an unnoticed purchase-price increase before approval?</strong><small>Read the control pattern →</small></a>
+          <a class="problem-card" href="use-cases/odoo-invoice-ocr-validation.md"><span>Accounting</span><strong>Why is OCR alone not enough for invoice capture?</strong><small>Read the control pattern →</small></a>
+          <a class="problem-card" href="use-cases/odoo-inventory-close-reconciliation.md"><span>Inventory</span><strong>What should be checked before closing inventory?</strong><small>Read the control pattern →</small></a>
+          <a class="problem-card" href="use-cases/odoo-accounting-diagnostics-control.md"><span>ERP Control</span><strong>How do you move from “something is wrong” to a defensible diagnosis?</strong><small>Read the control pattern →</small></a>
         </div>
       </div>
     </section>
 
-    <section class="section dark">
+    <section class="section principles">
       <div class="wrap split">
         <div>
-          <span class="eyebrow blue">COMMERCIAL SOURCE STAYS PRIVATE</span>
-          <h2>Public evidence. Private implementation.</h2>
-          <p>This repository is the public product and release-evidence layer. Commercial source code, credentials, customer data and private runtime logs are not published here.</p>
+          <span class="eyebrow blue">DESIGN PRINCIPLES</span>
+          <h2>Automation with boundaries.</h2>
+          <p>For high-impact business operations, speed without control can magnify the original error. CorePilot products use a stronger pattern: evidence before action, explicit checkpoints where needed, and verification afterward.</p>
         </div>
-        <div class="contact-card">
-          <strong>Need support or product information?</strong>
-          <a href="mailto:corepilotlabssupport@gmail.com">corepilotlabssupport@gmail.com</a>
+        <div class="principle-list">
+          <div><b>01</b><span><strong>Fail closed when evidence is not good enough.</strong><small>Uncertainty should stop sensitive execution, not be hidden.</small></span></div>
+          <div><b>02</b><span><strong>Separate diagnosis from execution.</strong><small>Understand the cause before changing data.</small></span></div>
+          <div><b>03</b><span><strong>Keep traceability.</strong><small>Record what was checked, approved and verified.</small></span></div>
         </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="wrap cta-box">
+        <div><span class="eyebrow">COREPILOT LABS</span><h2>Have an Odoo control problem worth solving?</h2><p>Product questions, implementation fit, commercial support and feature requests are handled through the official support channel.</p></div>
+        <div class="actions"><a class="button primary" href="mailto:corepilotlabssupport@gmail.com?subject=CorePilot%20Labs%20Odoo%20inquiry">corepilotlabssupport@gmail.com</a><a class="button" href="https://github.com/corepilotlabs/odoo18-business-apps/issues">Public feature request</a></div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap">CorePilot Labs · Odoo business control tools · corepilotlabssupport@gmail.com</div>
+    <div class="wrap footer-grid">
+      <div><strong>CorePilot Labs</strong><span>Odoo 19 business-control tools</span></div>
+      <div><a href="SUPPORT.md">Support</a><a href="SECURITY.md">Security</a><a href="FAQ.md">FAQ</a><a href="ar.html">العربية</a></div>
+    </div>
   </footer>
 </body>
 </html>
