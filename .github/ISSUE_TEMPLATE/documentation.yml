@@ -1,0 +1,29 @@
+name: Documentation correction
+description: Report an error, unclear statement, broken public link, or outdated product information.
+title: "[Docs] "
+labels: []
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Page or file
+      placeholder: "README.md, product brief, landing page..."
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What needs correction?
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested correction
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Public-data check
+      options:
+        - label: I confirm this issue contains no confidential or customer-specific information.
+          required: true
