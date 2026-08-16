@@ -17,6 +17,15 @@ CorePilot Labs builds focused control applications for Odoo 19. The products are
 | Smart Transaction Capture | Convert document evidence into verified draft accounting documents | 19.0 | $149 | [View](products/smart-transaction-capture.md) |
 | Inventory Close Control | Detect inventory-close risks before execution and verify the close afterward | 19.0 | $129 | [View](products/inventory-close-control.md) |
 
+## Problem library
+
+Instead of repeating product advertisements, the public repository explains the business problems the tools are designed to control:
+
+- [How to detect purchase price increases in Odoo 19](use-cases/odoo-purchase-price-increase-control.md)
+- [Why OCR invoice capture in Odoo 19 needs validation](use-cases/odoo-invoice-ocr-validation.md)
+- [Inventory close reconciliation in Odoo 19](use-cases/odoo-inventory-close-reconciliation.md)
+- [Diagnosing accounting and ERP problems in Odoo 19](use-cases/odoo-accounting-diagnostics-control.md)
+
 ## Why CorePilot
 
 We build around a controlled decision path:
