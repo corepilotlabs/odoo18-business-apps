@@ -26,11 +26,14 @@ CorePilot uses a stronger operating pattern:
 
 Read-only diagnostics stay simple. Sensitive accounting or operational actions require stronger controls when the risk justifies them.
 
-## Start from the problem
+## Start from the Odoo 18 problem
 
-- [How to detect purchase-price increases before approval](use-cases/odoo-purchase-price-increase-control.md)
-- [Why invoice OCR needs validation before accounting entry](use-cases/odoo-invoice-ocr-validation.md)
-- [How to diagnose accounting and ERP issues systematically](use-cases/odoo-accounting-diagnostics-control.md)
+- [Purchase price history before approval](use-cases/odoo18-purchase-price-history-before-approval.md)
+- [Invoice OCR validation before posting](use-cases/odoo18-invoice-ocr-validation-before-posting.md)
+- [Find the root cause of an accounting / ERP problem](use-cases/odoo18-accounting-problem-root-cause.md)
+- [Investigate inventory and accounting mismatches](use-cases/odoo18-inventory-accounting-mismatch.md)
+
+→ **[Open the full Odoo 18 Problem Library](ODOO18_PROBLEM_LIBRARY.md)**
 
 ## Built for Odoo 18 teams
 
@@ -42,6 +45,7 @@ The commercial source code remains private. This repository is the public produc
 
 - [English product showroom](index.html)
 - [واجهة المنتجات بالعربية](ar.html)
+- [Odoo 18 Problem Library](ODOO18_PROBLEM_LIBRARY.md)
 - [Buyer FAQ](FAQ.md)
 - [Support](SUPPORT.md)
 - [Security](SECURITY.md)
