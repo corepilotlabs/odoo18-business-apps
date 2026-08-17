@@ -1,31 +1,40 @@
-# ERP Control Suite — Odoo 19
+# ERP Control Center — Odoo 18
 
-**Price:** $199  
 **Publisher:** CorePilot Labs  
 **Support:** corepilotlabssupport@gmail.com
 
 ## The problem
 
-ERP issues are often discovered as symptoms: a trial balance looks wrong, inventory does not reconcile, configuration is inconsistent, or users know something is wrong but not where the cause is.
+ERP problems are usually discovered as symptoms: a trial balance looks wrong, inventory does not reconcile with accounting, configuration is inconsistent, or users simply know that something is wrong but do not know where the cause is.
 
-## What ERP Control Suite does
+## What ERP Control Center does
 
-ERP Control Suite provides one Odoo 19 application for structured ERP and accounting control. It brings together setup inspection, trial balance and partner reporting, reconciliation/control workflows, familiar finance presentation, inventory valuation/close controls and cutover evidence.
+ERP Control Center is a focused control layer for **Odoo 18**. It is designed to move the user from a vague symptom toward a structured diagnosis, supporting evidence, a controlled remediation path and post-action verification.
 
 ## Control approach
 
-**Inspect → Diagnose → Build evidence → Plan the fix → Control execution → Verify**
+**Inspect → Diagnose → Build evidence → Plan → Review / Dry Run → Execute with control → Verify**
 
-The goal is not to add another reporting screen. The goal is to make the path from problem to verified result more controlled and explainable.
+The purpose is not to create another passive dashboard. The purpose is to make ERP investigation and correction more understandable, traceable and controlled.
 
-## Release facts
+## Core capabilities
 
-- Odoo 19 commercial application
-- Technical module: `corepilot_odoo19_suite`
-- Version line: 19.0
-- OPL-1
-- One installable product rather than exposing internal components as separate store products
+- Structured ERP and accounting inspection
+- Root-cause oriented diagnosis
+- Configuration and data consistency checks
+- Trial-balance and accounting control support
+- Reconciliation-oriented workflows
+- Evidence before sensitive corrections
+- Controlled remediation path
+- Post-action verification
+- Audit-oriented traceability
 
 ## Best fit
 
-Accounting teams, finance managers, Odoo implementers and organizations that want stronger control around ERP configuration, reporting, reconciliation, inventory closing and go-live/cutover work.
+Finance teams, accountants, controllers, Odoo implementers and organizations that want a stronger way to investigate recurring Odoo problems without jumping directly from symptom to manual correction.
+
+## Have a problem the product does not cover?
+
+Describe the business problem and the expected outcome. We first check whether Odoo already supports it, whether configuration can solve it, or whether a focused extension is justified.
+
+**Contact:** corepilotlabssupport@gmail.com
