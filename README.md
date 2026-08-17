@@ -28,6 +28,14 @@ Read-only diagnostics stay simple. Sensitive accounting or operational actions r
 
 ## Start from the Odoo 18 problem
 
+### High-intent problem pages
+
+- [Stock valuation does not match the General Ledger](use-cases/odoo18-stock-valuation-vs-general-ledger.md) → ERP Control Center
+- [OCR vendor bills: extraction is not validation](use-cases/odoo18-ocr-vendor-bill-validation.md) → Smart Transaction Capture
+- [Purchase price variance before approval](use-cases/odoo18-purchase-price-variance-before-approval.md) → Purchase Price Control
+
+### More Odoo 18 control problems
+
 - [Purchase price history before approval](use-cases/odoo18-purchase-price-history-before-approval.md)
 - [Invoice OCR validation before posting](use-cases/odoo18-invoice-ocr-validation-before-posting.md)
 - [Find the root cause of an accounting / ERP problem](use-cases/odoo18-accounting-problem-root-cause.md)
