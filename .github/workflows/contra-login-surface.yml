@@ -1,0 +1,96 @@
+name: Contra Login Surface Diagnostic
+
+on:
+  pull_request:
+    branches: ["main"]
+    paths:
+      - ".github/contra-login-trigger.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  inspect-login:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Playwright Python only
+        run: pip install playwright==1.55.0
+      - name: Inspect Contra login surface safely
+        run: |
+          python - <<'PY'
+          import json, re
+          from playwright.sync_api import sync_playwright
+
+          def clean(v): return re.sub(r'\s+', ' ', v or '').strip()
+          def texts(page, selector, limit=20):
+              out=[]
+              loc=page.locator(selector)
+              for i in range(min(loc.count(), limit*2)):
+                  n=loc.nth(i)
+                  try:
+                      if not n.is_visible(): continue
+                      t=clean(n.inner_text())[:120]
+                  except Exception:
+                      continue
+                  if t and t not in out: out.append(t)
+                  if len(out)>=limit: break
+              return out
+          def inputs(page):
+              out=[]
+              loc=page.locator('input')
+              for i in range(min(loc.count(),20)):
+                  n=loc.nth(i)
+                  try:
+                      if not n.is_visible(): continue
+                  except Exception:
+                      continue
+                  m={}
+                  for k in ('type','name','id','autocomplete','placeholder','inputmode'):
+                      v=n.get_attribute(k)
+                      if v: m[k]=v[:120]
+                  out.append(m)
+              return out
+          def snap(page, stage):
+              body=clean(page.locator('body').inner_text()) if page.locator('body').count() else ''
+              low=body.lower()
+              return {'stage':stage,'url':page.url,'title':clean(page.title())[:200],
+                      'buttons':texts(page,"button, [role='button'], input[type='submit']"),
+                      'links':texts(page,'a'),'inputs':inputs(page),
+                      'markers':{'google':'google' in low,'email':'email' in low,'code':'code' in low,
+                                 'password':'password' in low,'captcha':any(x in low for x in ('captcha','verify you are human','cloudflare'))}}
+          result={'status':'ok','snapshots':[]}
+          try:
+              with sync_playwright() as p:
+                  browser=p.chromium.launch(channel='chrome', headless=True)
+                  page=browser.new_page()
+                  page.goto('https://contra.com/', wait_until='domcontentloaded', timeout=45000)
+                  page.wait_for_timeout(1000)
+                  result['snapshots'].append(snap(page,'home'))
+                  login=None
+                  for sel in ["a:has-text('Log in')","button:has-text('Log in')","a:has-text('Sign in')","button:has-text('Sign in')"]:
+                      loc=page.locator(sel)
+                      if loc.count() and loc.first.is_visible(): login=loc.first; break
+                  if login is None:
+                      result['status']='login_entry_not_found'
+                  else:
+                      login.click(); page.wait_for_timeout(1000)
+                      result['snapshots'].append(snap(page,'login_open'))
+                  browser.close()
+          except Exception as e:
+              result={'status':'probe_error','error_type':type(e).__name__,'message':str(e)[:300],'snapshots':result.get('snapshots',[])}
+          print('CONTRA_SURFACE_JSON=' + json.dumps(result, ensure_ascii=False))
+          with open('contra-login-surface.json','w',encoding='utf-8') as f: json.dump(result,f,ensure_ascii=False,indent=2)
+          PY
+      - name: Upload safe output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: contra-login-surface
+          path: contra-login-surface.json
+          if-no-files-found: warn
+          retention-days: 1
