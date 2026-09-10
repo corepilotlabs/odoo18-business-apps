@@ -1,0 +1,29 @@
+name: Market Hunter Alternate Runner
+
+on:
+  workflow_call:
+    inputs:
+      source_ref:
+        required: true
+        type: string
+      expected_sha:
+        required: true
+        type: string
+    secrets:
+      RAILWAY_PROJECT_TOKEN:
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  alternate-runner-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Prove alternate runner allocation
+        run: |
+          echo "ALT_RUNNER_OK=true"
+          echo "SOURCE_REF=${{ inputs.source_ref }}"
+          echo "EXPECTED_SHA=${{ inputs.expected_sha }}"
+          if [ -n "${{ secrets.RAILWAY_PROJECT_TOKEN }}" ]; then echo "RAILWAY_TOKEN_PRESENT=true"; else echo "RAILWAY_TOKEN_PRESENT=false"; fi
