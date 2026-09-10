@@ -1,0 +1,22 @@
+name: Market Hunter runner probe
+
+on:
+  push:
+    branches: ['ci/market-hunter-runner-probe']
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prove runner execution
+        run: |
+          set -euo pipefail
+          echo "ACCOUNT=corepilotlabs"
+          echo "RUNNER_OK=true"
+          node --version
+          git rev-parse HEAD
