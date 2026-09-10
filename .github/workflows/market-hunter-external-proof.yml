@@ -1,0 +1,30 @@
+name: Market Hunter external proof
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Enable pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@11.9.0 --activate
+      - name: Install workspace
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Compile Market Hunter scope
+        run: pnpm --filter @nexora/market-hunter exec tsc --project tsconfig.multi-agent.json
+      - name: Run Arena and learning proofs
+        run: |
+          node --test apps/market-hunter/test/multi-agent/arena-mentor.test.mjs
+          node --test apps/market-hunter/test/multi-agent/cooperative-strategy.test.mjs
+          node --test apps/market-hunter/test/multi-agent/teams.test.mjs
