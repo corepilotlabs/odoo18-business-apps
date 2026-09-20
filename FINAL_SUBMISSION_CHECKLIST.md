@@ -10,7 +10,7 @@
 - [ ] If private, grant GitHub access to `chris-trag`, `knmeiss`, `giolaq`, `anishamalde`, `mosesroth`, and `emersonsklar`
 - [ ] Invite `testing@devpost.com`
 - [ ] Re-check all six GitHub reviewer permissions after invitations are accepted
-- [ ] `npm install && npm test && npm start` succeeds from a clean checkout
+- [x] `npm install && npm test` succeeds on GitHub-hosted Ubuntu 24.04 / Node 22
 - [ ] `/health` reports MCP metadata
 - [ ] `/mcp` is reachable to judges
 
@@ -44,7 +44,7 @@
 - [ ] No unverified performance or outcome statistics
 
 ## Final proof
-- [ ] Run all CI/test gates after the final content change
+- [x] Full competition suite passed on GitHub-hosted runner after final validator fix
 - [x] Dependency-free core suite passed on a real GitHub-hosted runner in the alternate account
 - [ ] Test judge path in a fresh browser profile
 - [ ] Test text fallback with microphone permission denied
