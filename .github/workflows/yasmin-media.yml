@@ -70,17 +70,9 @@ jobs:
           CHROME_PATH: /usr/bin/google-chrome
         run: |
           AUDIO_SEC=$(ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 media/yasmin-narration.mp3)
-          TARGET_MS=$(python - <<'PY'
-          import os
-          s=float(os.environ['AUDIO_SEC'])
-          print(int(max(120, s+4)*1000))
-          PY
-          )
+          TARGET_MS=$(python -c 'import sys; s=float(sys.argv[1]); print(int(max(120, s+4)*1000))' "$AUDIO_SEC")
+          echo "Target capture duration: $TARGET_MS ms"
           TARGET_MS="$TARGET_MS" node tools/record-demo.mjs
-        env:
-          DISPLAY: :99
-          CHROME_PATH: /usr/bin/google-chrome
-          AUDIO_SEC: ${{ env.AUDIO_SEC }}
 
       - name: Stop recorder and mux narration
         if: always()
