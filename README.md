@@ -3,14 +3,13 @@
 **Primary track:** Alexa+  
 **Project:** Yasmin Voice Tutor  
 **Submission type:** Significant update to an existing education product concept  
-**Judge entry point:** `yasmin/hackathon/amazon-2026/`
+**Judge entry point:** repository root on branch `yasmin-amazon-2026`
 
 > Yasmin is a learning agent that teaches, listens, adapts, remembers compact mastery evidence across sessions, and refuses to claim understanding without proof.
 
 ## Judge quick start
 
 ```bash
-cd yasmin/hackathon/amazon-2026
 npm install
 npm test
 npm start
@@ -37,7 +36,7 @@ Minimum competition protocol requirement documented by the event: MCP `2025-11-2
 ## Important judge files
 
 - `JUDGE_QUICKSTART.md` — fastest evaluation path
-- `SUBMISSION_DRAFT.md` — complete project story
+- `DEVPOST_FINAL_COPY.md` — complete project story
 - `SIGNIFICANT_UPDATE.md` — what was built during the hackathon window
 - `PRODUCT_FEEDBACK.md` — required developer feedback
 - `FRICTION_LOG.md` — optional judging-bonus friction log
@@ -47,7 +46,7 @@ Minimum competition protocol requirement documented by the event: MCP `2025-11-2
 
 ## Privacy model
 
-The judge demo does not require a child account. Cross-session browser memory stores compact learning metadata such as mastery state and support need. It does **not** retain voice audio or the learner transcript in the learning profile.
+This public submission branch does not require GitHub collaborator access. The judge demo does not require a child account. Cross-session browser memory stores compact learning metadata such as mastery state and support need. It does **not** retain voice audio or the learner transcript in the learning profile.
 
 ## Scope honesty
 
