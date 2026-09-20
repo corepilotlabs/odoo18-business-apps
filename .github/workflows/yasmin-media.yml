@@ -27,6 +27,11 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Install media system packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg xvfb
+
       - name: Install app and capture dependency
         run: |
           npm install --no-audit --no-fund
@@ -77,8 +82,12 @@ jobs:
       - name: Stop recorder and mux narration
         if: always()
         run: |
-          kill -INT "$(cat /tmp/ffmpeg.pid)" 2>/dev/null || true
-          sleep 3
+          if [ -f /tmp/ffmpeg.pid ]; then
+            kill -INT "$(cat /tmp/ffmpeg.pid)" 2>/dev/null || true
+            sleep 3
+          fi
+          test -s media/yasmin-screen.mp4
+          test -s media/yasmin-narration.mp3
           ffmpeg -y -loglevel warning \
             -i media/yasmin-screen.mp4 -i media/yasmin-narration.mp3 \
             -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest \
