@@ -44,3 +44,8 @@ Automated Judge Media Factory:
 ## Submission safety
 
 The branch contains only competition-facing Yasmin material. Unrelated private projects are not exposed to judges.
+
+
+## Demo video
+
+YouTube (Unlisted): `https://youtu.be/tv48YY4uPSk`
