@@ -2,6 +2,8 @@
 
 This page is designed for a reviewer who has only a few minutes.
 
+**Public source branch:** `https://github.com/corepilotlabs/odoo18-business-apps/tree/yasmin-amazon-2026`
+
 ## 1. Run the project
 
 ```bash
@@ -85,3 +87,8 @@ No child account is needed for judging. The web demo can persist compact mastery
 - Browser speech recognition support varies by browser; typed input is always available.
 - The bundled lesson set is a focused judge harness, not a full curriculum.
 - Production learner-memory synchronization is intentionally outside the competition demo.
+
+
+## Verified CI
+
+The full `npm test` suite passed on GitHub-hosted Ubuntu 24.04 / Node.js 22 after the final scope validator fix. This includes the MCP integration path.
