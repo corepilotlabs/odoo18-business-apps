@@ -6,10 +6,9 @@
 - [ ] Significant-update explanation copied from `SIGNIFICANT_UPDATE.md`
 
 ## Repository
-- [ ] Repository URL entered in Devpost
-- [ ] If private, grant GitHub access to `chris-trag`, `knmeiss`, `giolaq`, `anishamalde`, `mosesroth`, and `emersonsklar`
-- [ ] Invite `testing@devpost.com`
-- [ ] Re-check all six GitHub reviewer permissions after invitations are accepted
+- [ ] Enter public branch URL in Devpost
+- [x] Submission code is public on branch `yasmin-amazon-2026`; no collaborator invitation is required
+- [x] Judge access instructions point to the public branch
 - [x] `npm install && npm test` succeeds on GitHub-hosted Ubuntu 24.04 / Node 22
 - [ ] `/health` reports MCP metadata
 - [ ] `/mcp` is reachable to judges
