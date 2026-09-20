@@ -1,12 +1,24 @@
 import { chromium } from 'playwright-core';
+import { access, writeFile } from 'node:fs/promises';
 
 const targetMs = Math.max(115000, Number(process.env.TARGET_MS || 125000));
-const startedAt = Date.now();
+let startedAt = 0;
 const scale = targetMs / 125000;
 
 const waitUntil = async (seconds) => {
   const remaining = startedAt + (seconds * 1000 * scale) - Date.now();
   if (remaining > 0) await new Promise((resolve) => setTimeout(resolve, remaining));
+};
+
+const waitForSignal = async (path) => {
+  for (;;) {
+    try {
+      await access(path);
+      return;
+    } catch {
+      await new Promise((resolve) => setTimeout(resolve, 200));
+    }
+  }
 };
 
 const browser = await chromium.launch({
@@ -71,6 +83,9 @@ const proof = async (kicker, text, strategy, decision) => {
 };
 
 await shot('01-opening');
+await writeFile('/tmp/yasmin-browser-ready', 'ready');
+await waitForSignal('/tmp/yasmin-record-go');
+startedAt = Date.now();
 
 await waitUntil(7);
 await click('startBtn');
