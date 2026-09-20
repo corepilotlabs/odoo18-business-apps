@@ -1,0 +1,105 @@
+name: Yasmin Judge Media Factory
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - yasmin-amazon-2026
+    paths:
+      - 'public/**'
+      - 'tools/record-demo.mjs'
+      - 'FINAL_VIDEO_NARRATION.md'
+      - '.github/workflows/yasmin-media.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build-media:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout competition branch
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install app and capture dependency
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save playwright-core@1.55.0
+          mkdir -p media
+          which google-chrome
+          which ffmpeg
+          which Xvfb
+
+      - name: Download Yasmin final narration
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            "https://www.aidocmaker.com/g0/audio?name=9ff9681e24d0421baa2997a86337d014" \
+            -o media/yasmin-narration.mp3
+          ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 media/yasmin-narration.mp3
+
+      - name: Start Yasmin app
+        run: |
+          nohup npm start > /tmp/yasmin-server.log 2>&1 &
+          for i in {1..40}; do
+            if curl -fsS http://127.0.0.1:3000/health >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/yasmin-server.log
+          exit 1
+
+      - name: Start virtual display and screen recorder
+        run: |
+          Xvfb :99 -screen 0 1440x1000x24 -nolisten tcp >/tmp/xvfb.log 2>&1 &
+          echo $! > /tmp/xvfb.pid
+          sleep 2
+          DISPLAY=:99 ffmpeg -y -loglevel warning \
+            -f x11grab -draw_mouse 0 -framerate 30 -video_size 1440x1000 -i :99.0 \
+            -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p \
+            media/yasmin-screen.mp4 >/tmp/ffmpeg.log 2>&1 &
+          echo $! > /tmp/ffmpeg.pid
+
+      - name: Run real judge demo capture
+        env:
+          DISPLAY: :99
+          CHROME_PATH: /usr/bin/google-chrome
+        run: |
+          AUDIO_SEC=$(ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 media/yasmin-narration.mp3)
+          TARGET_MS=$(python - <<'PY'
+          import os
+          s=float(os.environ['AUDIO_SEC'])
+          print(int(max(120, s+4)*1000))
+          PY
+          )
+          TARGET_MS="$TARGET_MS" node tools/record-demo.mjs
+        env:
+          DISPLAY: :99
+          CHROME_PATH: /usr/bin/google-chrome
+          AUDIO_SEC: ${{ env.AUDIO_SEC }}
+
+      - name: Stop recorder and mux narration
+        if: always()
+        run: |
+          kill -INT "$(cat /tmp/ffmpeg.pid)" 2>/dev/null || true
+          sleep 3
+          ffmpeg -y -loglevel warning \
+            -i media/yasmin-screen.mp4 -i media/yasmin-narration.mp3 \
+            -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest \
+            media/yasmin-judge-demo.mp4
+          ffprobe -v error -show_entries format=duration,size -of json media/yasmin-judge-demo.mp4
+
+      - name: Upload judge media
+        uses: actions/upload-artifact@v4
+        with:
+          name: yasmin-judge-media
+          path: |
+            media/yasmin-judge-demo.mp4
+            media/*.png
+            media/yasmin-narration.mp3
+          if-no-files-found: error
+          retention-days: 30
