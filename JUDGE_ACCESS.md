@@ -1,42 +1,21 @@
 # Judge Access — Amazon Developer Hackathon 2026
 
-The repository is private, so the final submission must satisfy the official private-repository access requirement before the deadline.
+This submission branch is **public**, so Amazon and Devpost reviewers do not need collaborator invitations to inspect the code.
 
-## Required Amazon GitHub reviewers
+## Public judge branch
 
-Grant repository access to:
+Repository:
+`corepilotlabs/odoo18-business-apps`
 
-- `chris-trag`
-- `knmeiss`
-- `giolaq`
-- `anishamalde`
-- `mosesroth`
-- `emersonsklar`
+Branch:
+`yasmin-amazon-2026`
 
-Also invite:
-
-- `testing@devpost.com`
-
-## Current verified status
-
-At the time this file was added, the six Amazon GitHub accounts above did **not** yet have collaborator permission on this private repository.
-
-This is a submission blocker, not a code blocker.
-
-## Repository entry point
-
-Judges should start at:
-
-`YASMIN_AMAZON_HACKATHON.md`
-
-Then follow:
-
-`yasmin/hackathon/amazon-2026/JUDGE_QUICKSTART.md`
+Direct branch URL:
+`https://github.com/corepilotlabs/odoo18-business-apps/tree/yasmin-amazon-2026`
 
 ## Quick run
 
 ```bash
-cd yasmin/hackathon/amazon-2026
 npm install
 npm test
 npm start
@@ -44,6 +23,18 @@ npm start
 
 The project exposes:
 
-- web judge experience at the server root;
+- judge web experience at the server root;
 - health metadata at `/health`;
 - Streamable HTTP MCP at `/mcp`.
+
+## Why this branch exists
+
+The original Yasmin engineering work lives alongside unrelated private projects. The public competition branch contains only the Amazon hackathon submission surface and avoids granting judges access to unrelated code.
+
+## Judge entry order
+
+1. `README.md`
+2. `JUDGE_QUICKSTART.md`
+3. **Let Yasmin present**
+4. `JUDGING_MATRIX.md`
+5. `SIGNIFICANT_UPDATE.md`
