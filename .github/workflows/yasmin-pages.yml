@@ -1,12 +1,8 @@
 name: Yasmin Judge Demo Pages
 
+# GitHub Pages requires one-time repository-level enablement that the connected
+# GitHub App cannot perform. Keep this workflow manual until Pages is enabled.
 on:
-  push:
-    branches:
-      - yasmin-amazon-2026
-    paths:
-      - 'public/**'
-      - '.github/workflows/yasmin-pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -14,30 +10,12 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: yasmin-pages
-  cancel-in-progress: true
-
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      - name: Upload judge demo
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
-
-      - name: Deploy judge demo
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Pages not enabled
+        run: |
+          echo "GitHub Pages needs one-time repository Settings enablement."
+          echo "The public branch and downloadable judge artifact remain available."
+          exit 1
