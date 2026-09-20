@@ -38,11 +38,15 @@ assert.match(files.friction, /2025-11-25/);
 assert.match(files.video, /Agreement is not evidence/i);
 
 const prohibitedClaims = [
-  /complete curriculum/i,
   /guaranteed learning/i,
   /production-grade voice/i,
   /stores the child's transcript/i
 ];
+
+assert.ok(
+  /not presented as a complete curriculum/i.test(files.submission),
+  'Devpost copy must explicitly state that the demo is not a complete curriculum'
+);
 
 for (const pattern of prohibitedClaims) {
   assert.ok(!pattern.test(files.submission), `unsafe or unsupported claim: ${pattern}`);
