@@ -50,4 +50,4 @@
 - [ ] Test Presenter Mode from a clean memory state
 - [ ] Test Presenter Mode after prior learning memory exists
 
-- [x] Demo video uploaded to YouTube as Unlisted: https://youtu.be/tv48YY4uPSk
+- [x] Demo video uploaded to YouTube as Public: https://youtu.be/tv48YY4uPSk
