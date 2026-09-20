@@ -134,3 +134,12 @@ The competition demo does not require a child account. The local learning profil
 ## Demo scope
 
 The included lessons are deliberately small and deterministic so reviewers can reproduce the agent's decisions. They demonstrate the learning architecture and are not presented as a complete curriculum.
+
+
+## Public source and verification
+
+Public submission branch:
+
+`https://github.com/corepilotlabs/odoo18-business-apps/tree/yasmin-amazon-2026`
+
+The complete competition suite has passed on a GitHub-hosted Ubuntu 24.04 runner with Node.js 22, including the deterministic learning engine, presenter flow, cross-session memory, submission-consistency gate, and real MCP client/server integration test.
