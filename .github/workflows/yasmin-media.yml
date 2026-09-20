@@ -80,11 +80,11 @@ jobs:
 
       - name: Start virtual display and screen recorder
         run: |
-          Xvfb :99 -screen 0 1440x1000x24 -nolisten tcp >/tmp/xvfb.log 2>&1 &
+          Xvfb :99 -screen 0 1440x900x24 -nolisten tcp >/tmp/xvfb.log 2>&1 &
           echo $! > /tmp/xvfb.pid
           sleep 2
           DISPLAY=:99 ffmpeg -y -loglevel warning \
-            -f x11grab -draw_mouse 0 -framerate 30 -video_size 1440x1000 -i :99.0 \
+            -f x11grab -draw_mouse 0 -framerate 30 -video_size 1440x900 -i :99.0 \
             -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p \
             media/yasmin-screen.mp4 >/tmp/ffmpeg.log 2>&1 &
           echo $! > /tmp/ffmpeg.pid
@@ -110,7 +110,10 @@ jobs:
           test -s media/yasmin-narration.mp3
           ffmpeg -y -loglevel warning \
             -i media/yasmin-screen.mp4 -i media/yasmin-narration.mp3 \
-            -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest \
+            -map 0:v:0 -map 1:a:0 \
+            -vf "crop=1440:810:0:90,scale=1280:720" \
+            -c:v libx264 -preset medium -crf 20 -pix_fmt yuv420p \
+            -c:a aac -b:a 192k -shortest \
             media/yasmin-judge-demo.mp4
           ffprobe -v error -show_entries format=duration,size -of json media/yasmin-judge-demo.mp4
 
