@@ -7,6 +7,8 @@
 
 > Yasmin is a learning agent that teaches, listens, adapts, remembers compact mastery evidence across sessions, and refuses to claim understanding without proof.
 
+**CI:** this public branch runs the complete competition test suite on every push.
+
 ## Judge quick start
 
 ```bash
