@@ -78,18 +78,13 @@ jobs:
           cat /tmp/yasmin-server.log
           exit 1
 
-      - name: Start virtual display and screen recorder
+      - name: Start virtual display
         run: |
           Xvfb :99 -screen 0 1440x900x24 -nolisten tcp >/tmp/xvfb.log 2>&1 &
           echo $! > /tmp/xvfb.pid
           sleep 2
-          DISPLAY=:99 ffmpeg -y -loglevel warning \
-            -f x11grab -draw_mouse 0 -framerate 30 -video_size 1440x900 -i :99.0 \
-            -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p \
-            media/yasmin-screen.mp4 >/tmp/ffmpeg.log 2>&1 &
-          echo $! > /tmp/ffmpeg.pid
 
-      - name: Run real judge demo capture
+      - name: Run synchronized judge demo capture
         env:
           DISPLAY: :99
           CHROME_PATH: /usr/bin/google-chrome
@@ -97,7 +92,31 @@ jobs:
           AUDIO_SEC=$(ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 media/yasmin-narration.mp3)
           TARGET_MS=$(python -c 'import sys; s=float(sys.argv[1]); print(int(max(120, s+4)*1000))' "$AUDIO_SEC")
           echo "Target capture duration: $TARGET_MS ms"
-          TARGET_MS="$TARGET_MS" node tools/record-demo.mjs
+
+          rm -f /tmp/yasmin-browser-ready /tmp/yasmin-record-go
+          TARGET_MS="$TARGET_MS" node tools/record-demo.mjs >/tmp/yasmin-record.log 2>&1 &
+          echo $! > /tmp/record.pid
+
+          for i in {1..60}; do
+            if [ -f /tmp/yasmin-browser-ready ]; then break; fi
+            sleep 1
+          done
+          test -f /tmp/yasmin-browser-ready
+
+          DISPLAY=:99 ffmpeg -y -loglevel warning \
+            -f x11grab -draw_mouse 0 -framerate 30 -video_size 1440x900 -i :99.0 \
+            -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p \
+            media/yasmin-screen.mp4 >/tmp/ffmpeg.log 2>&1 &
+          echo $! > /tmp/ffmpeg.pid
+          sleep 1
+          touch /tmp/yasmin-record-go
+
+          set +e
+          wait "$(cat /tmp/record.pid)"
+          code=$?
+          set -e
+          cat /tmp/yasmin-record.log
+          exit "$code"
 
       - name: Stop recorder and mux narration
         if: always()
