@@ -53,3 +53,8 @@ This public submission branch does not require GitHub collaborator access. The j
 ## Scope honesty
 
 The bundled lessons are intentionally small, deterministic judge loops. They demonstrate the learning-agent architecture; they are not presented as a complete curriculum.
+
+
+## Demo video
+
+Unlisted YouTube demo: https://youtu.be/tv48YY4uPSk
