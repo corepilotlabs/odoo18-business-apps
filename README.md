@@ -16,7 +16,7 @@ Three product families are available for both supported Odoo series.
 
 | Product | Odoo 18 | Odoo 19 | Business problem |
 |---|---|---|---|
-| **ERP Control Center** | [Open Odoo 18 listing](https://apps.odoo.com/apps/modules/18.0/corepilot_setup_reports) | [Open Odoo 19 listing](https://apps.odoo.com/apps/modules/19.0/corepilot_setup_reports) | Diagnose ERP/accounting problems with evidence before correction |
+| **ERP Control Center** | [Open Odoo 18 listing](https://apps.odoo.com/apps/modules/18.0/corepilot_setup_reports) | [Open Odoo 19 listing](https://apps.odoo.com/apps/modules/19.0/corepilot_odoo19_suite) | Diagnose ERP/accounting problems with evidence before correction |
 | **Purchase Price Control** | [Open Odoo 18 listing](https://apps.odoo.com/apps/modules/18.0/corepilot_purchase_price_control) | [Open Odoo 19 listing](https://apps.odoo.com/apps/modules/19.0/corepilot_purchase_price_control) | Detect meaningful purchase-price increases before approval |
 | **Smart Transaction Capture** | [Open Odoo 18 listing](https://apps.odoo.com/apps/modules/18.0/corepilot_smart_transaction_capture) | [Open Odoo 19 listing](https://apps.odoo.com/apps/modules/19.0/corepilot_smart_transaction_capture) | Turn PDF/image invoice capture into a controlled accounting draft workflow |
 
